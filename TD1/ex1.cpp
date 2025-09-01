@@ -15,7 +15,7 @@ int main() {
     for(int i = 2; i < a; i++) {
         if(a % i == 0) {
             estPremier = false;
-            
+            break;
         }
     }
     
