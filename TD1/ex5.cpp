@@ -1,6 +1,6 @@
 #include <iostream>
 #include <ctime>
-#include <cstdlib>
+//#include <cstdlib>
 
 int main() {
     std::srand(std::time(nullptr)); // initialise la graine
