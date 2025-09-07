@@ -1,0 +1,81 @@
+📝 Exercices sur les Tableaux
+
+
+Somme des éléments
+Crée un tableau de 10 entiers.
+
+Calcule et affiche la somme des valeurs.
+
+
+tableau -> {1,2,3,4,5,6,7,8,9,10}
+
+somme -> 0 
+pour (entier i -> 0 ; i inférieur à 10 ; i++)
+   somme ->  somme  + tableau[i]
+
+afficher somme
+
+
+
+Recherche d’un élément
+
+Demande un tableau de 6 entiers.
+
+Demande à l’utilisateur une valeur x.
+
+Vérifie si x se trouve dans le tableau (affiche "oui" ou "non").
+
+
+tab[6]
+
+affiche -> saisir 6 nombres
+
+pour(i -> 0 ; i < 6 ; i++)
+    saisir -> tab[i]
+
+entier -> x
+
+afficher -> saisir la valeur de x
+
+saisir -> x;
+
+bool trouver -> false 
+pour(i -> 0 ; i < 6 ; i++)
+    si tab[i] == x;
+        trouver = true;
+        break;
+
+
+si trouver = trouver
+    afficher -> oui 
+sinon
+    afficher -> non
+
+
+Niveau 2 – Moyenne et conditions
+
+Moyenne
+
+Remplis un tableau de 8 entiers.
+
+Calcule la moyenne.
+
+Affiche toutes les valeurs supérieures à la moyenne.
+
+
+tab[8]
+entier moyenne -> 0.0
+afficher -> veuillez rentrer 8 notes
+
+pour (i -> 0 ; i < 8 ; i++)
+    saisir -> tab[i]
+    moyenne ->  moyenne + tab[i] 
+
+moyenne -> moyenne / 8
+
+
+pour (i -> 0 ; i < 8 ; i++)
+
+    si (tab[i]>moyenne)
+        afficher -> tab[i]
+
