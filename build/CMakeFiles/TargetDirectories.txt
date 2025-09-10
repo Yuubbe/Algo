@@ -1,0 +1,5 @@
+/home/etud/Documents/algo/Algo/build/CMakeFiles/exo1.dir
+/home/etud/Documents/algo/Algo/build/CMakeFiles/exo2.dir
+/home/etud/Documents/algo/Algo/build/CMakeFiles/exo3.dir
+/home/etud/Documents/algo/Algo/build/CMakeFiles/edit_cache.dir
+/home/etud/Documents/algo/Algo/build/CMakeFiles/rebuild_cache.dir

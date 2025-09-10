@@ -1,0 +1,185 @@
+Fonction factorielle(n : entier positif) : entier
+	Si n = 0 alors
+		Retourner 1
+	Sinon
+		Retourner n * factorielle(n - 1)
+	Fin Si
+Fin Fonction
+
+Exemples :
+	factorielle(0) retourne 1
+	factorielle(5) retourne 120
+
+
+exercice 2 : 
+
+
+somme_premier(unsigned n)
+
+Fonction est_premier(x : entier) : booléen
+	Si x < 2 alors
+		Retourner faux
+	Pour i de 2 à x-1
+		Si x mod i = 0 alors
+			Retourner faux
+	Fin Pour
+	Retourner vrai
+Fin Fonction
+
+Fonction somme_premiers(n : entier positif) : entier
+	somme ← 0
+	Pour i de 2 à n-1
+		Si est_premier(i) alors
+			somme ← somme + i
+	Fin Pour
+	Retourner somme
+Fin Fonction
+
+
+
+
+Fonction puissance(a : entier, n : entier positif) : entier
+    resultat ← 1
+    Pour i de 1 à n
+        resultat ← resultat * a
+    Fin Pour
+    Retourner resultat
+Fin Fonction
+
+
+
+Fonction trier3(a : entier, b : entier, c : entier)
+    Si a > b alors
+        échanger a et b
+    Fin Si
+    Si a > c alors
+        échanger a et c
+    Fin Si
+    Si b > c alors
+        échanger b et c
+    Fin Si
+Fin Fonction
+
+
+
+
+
+
+Exercice 5 — Loto
+On veut analyser les résultats de différentes grilles de loto. Une grille de loto est représentée par
+un tableau de 49 booléens. Un numéro i est coché dans la grille G si G[i-1] est vrai (attention,
+l’indice 0 correspond au numéro 1).
+On déclare un alias de type pour une grille :
+
+
+typedef bool Grille[49];
+1
+Un tirage est un tableau contenant 7 entiers distincts entre 1 et 49 : les six premiers sont les
+numéros gagnants, le dernier est le numéro complémentaire.
+typedef unsigned Tirage[7];
+
+
+Compléter les fonctions suivantes :
+
+
+1. Écrire une fonction void initialiser(Grille g); qui met toutes les cases de la grille à
+false.
+
+
+Écrire une fonction bool nombre_valide(const Grille g); qui vérifie que la grille contient
+exactement 7 numéros cochés. La fonction retourne true si la grille est correcte, false
+sinon.
+
+Fonction nombre_valide(g : tableau[49] de booléen) : booléen
+	compteur ← 0
+	Pour i de 0 à 48
+		Si g[i] = vrai alors
+			compteur ← compteur + 1
+	Fin Pour
+	Si compteur = 7 alors
+		Retourner vrai
+	Sinon
+		Retourner faux
+	Fin Si
+Fin Fonction
+
+
+
+
+
+crire une fonction bool tirage_valide(const Tirage t); qui vérifie que tous les nu-
+méros sont disctincts dans le tirage. La fonction retourne true si la grille est correcte,
+false sinon.
+
+
+
+bool -> tirage_valide(const Tirage t)
+    pour ( i -> 0 ; i < 7 ; i++)
+        si t[i] -> t[j] 
+            Retourner faux
+    fin pour
+    Retourner vrai
+
+Fonction tirage_valide(t : tableau[7] d'entiers) : booléen
+	Pour i de 0 à 6
+		Pour j de i+1 à 6
+			Si t[i] = t[j] alors
+				Retourner faux
+		Fin Pour
+	Fin Pour
+	Retourner vrai
+Fin Fonction
+
+
+
+
+Écrire une fonction unsigned calculer_gain(const Grille g, const Tirage t); qui
+retourne le gain de la grille selon le tirage.
+— Si la grille contient moins de 3 bons numéros (hors complémentaire), le gain est nul.
+— Pour 3 bons numéros : gain de 10, pour 4 bons : 100, pour 5 bons : 1 000, pour 6
+bons : 100 000.
+— Si le numéro complémentaire est également coché, le gain est multiplié par 2.
+
+
+
+
+
+Fonction calculer_gain(g : tableau[49] de booléen, t : tableau[7] d'entiers) : entier
+	bons_numéros ← 0
+	Pour i de 0 à 5
+		Si g[t[i] - 1] = vrai alors
+			bons_numéros ← bons_numéros + 1
+	Fin Pour
+	gain ← 0
+	Si bons_numéros = 3 alors
+		gain ← 10
+	Sinon Si bons_numéros = 4 alors
+		gain ← 100
+	Sinon Si bons_numéros = 5 alors
+		gain ← 1000
+	Sinon Si bons_numéros = 6 alors
+		gain ← 100000
+	Fin Si
+	Si gain > 0 et g[t[6] - 1] = vrai alors
+		gain ← gain * 2
+	Fin Si
+	Retourner gain
+Fin Fonction
+
+Fonction jouer_loto()
+	Déclarer une grille g
+	initialiser(g)
+	Demander au joueur de cocher 7 numéros dans la grille g
+	Vérifier que la grille est valide (nombre_valide(g))
+	Si la grille n'est pas valide alors
+		Afficher "Grille invalide"
+		Arrêter
+	Fin Si
+	Effectuer un tirage aléatoire t
+	Vérifier que le tirage est valide (tirage_valide(t))
+	Afficher les numéros du tirage
+	gain ← calculer_gain(g, t)
+	Afficher "Gain : " et gain
+Fin Fonction
+
+

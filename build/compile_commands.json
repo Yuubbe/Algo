@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/etud/Documents/algo/Algo/build",
+  "command": "/usr/bin/g++  -I/home/etud/Documents/algo/Algo/. -g -std=gnu++14 -o CMakeFiles/exo1.dir/exo_perso/ex1.cpp.o -c /home/etud/Documents/algo/Algo/exo_perso/ex1.cpp",
+  "file": "/home/etud/Documents/algo/Algo/exo_perso/ex1.cpp"
+},
+{
+  "directory": "/home/etud/Documents/algo/Algo/build",
+  "command": "/usr/bin/g++  -I/home/etud/Documents/algo/Algo/. -g -std=gnu++14 -o CMakeFiles/exo1.dir/exo_perso/exo4.cpp.o -c /home/etud/Documents/algo/Algo/exo_perso/exo4.cpp",
+  "file": "/home/etud/Documents/algo/Algo/exo_perso/exo4.cpp"
+},
+{
+  "directory": "/home/etud/Documents/algo/Algo/build",
+  "command": "/usr/bin/g++  -I/home/etud/Documents/algo/Algo/. -g -std=gnu++14 -o CMakeFiles/exo1.dir/TD3/exo1.cpp.o -c /home/etud/Documents/algo/Algo/TD3/exo1.cpp",
+  "file": "/home/etud/Documents/algo/Algo/TD3/exo1.cpp"
+},
+{
+  "directory": "/home/etud/Documents/algo/Algo/build",
+  "command": "/usr/bin/g++  -I/home/etud/Documents/algo/Algo/. -g -std=gnu++14 -o CMakeFiles/exo2.dir/exo_perso/exo2.cpp.o -c /home/etud/Documents/algo/Algo/exo_perso/exo2.cpp",
+  "file": "/home/etud/Documents/algo/Algo/exo_perso/exo2.cpp"
+},
+{
+  "directory": "/home/etud/Documents/algo/Algo/build",
+  "command": "/usr/bin/g++  -I/home/etud/Documents/algo/Algo/. -g -std=gnu++14 -o CMakeFiles/exo3.dir/exo_perso/ex3.cpp.o -c /home/etud/Documents/algo/Algo/exo_perso/ex3.cpp",
+  "file": "/home/etud/Documents/algo/Algo/exo_perso/ex3.cpp"
+}
+]
