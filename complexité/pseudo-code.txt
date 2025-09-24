@@ -100,7 +100,7 @@ Pour i allant de 0 à n-1
 pour i allant de 0 à i
     S[i] += T[j]
 
-
+complexité : O(n²)
 
 
 
