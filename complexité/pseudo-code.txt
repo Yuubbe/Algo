@@ -1,0 +1,124 @@
+
+Tab -> [n]
+
+saisir x
+
+x - > int 
+
+sortie : vrai si x est dans t sinon faux 
+
+pour i allant de 0 à n-1
+    si jamais t[i] == x
+        retourner vrai
+
+
+retourner faux
+
+=> O(n) pire des cas
+=> O(1) meilleur des cas (x est en t[0])
+
+
+
+2. 
+min ← 0
+max ← n-1
+
+tant que max - min >= 2
+    j ← (min + max) / 2
+    si t[j] == x
+        retourner vrai
+    si t[j] < x
+        min ← j
+    sinon
+        max ← j
+
+retourner (t[min] == x ou t[max] == x)
+
+
+=> O(min(x,n)) = O(n) dans le pire des cas
+=> O(log n) dans le meilleur des cas
+
+
+
+
+Exercice 2 :
+
+On souhaite vérifier si un tableau T de taille n contient au moins deux fois la même valeur
+(c’est-à-dire s’il y a un doublon).
+
+
+1. Écrire un pseudo-code qui répond à cette question sans utiliser de tableau auxiliaire. Le
+pseudo-code doit retourner true s’il existe deux indices i < j tels que T[i] = T[j]
+
+
+Tab -> [n]
+
+n-> int
+saisir n
+
+pour i allant de 1 à n-1
+    pour j allant de 0 à i-1
+        si t[i]==[j]
+            retourner vrai
+        fin si
+    fin pour
+fin pour 
+retourner faux
+
+pire des cas : O(n²)
+
+
+
+Exercice 3 :
+
+Entrée : un entier n ≥ 1
+Sortie : aucune
+1. k ← n
+2. tant que k > 0 faire
+3. pour i allant de 1 à k faire
+4. afficher(i)
+5. k ← k div 2
+
+1. Indiquer les différentes valeurs que prend la variable k au cours de l’exécution.
+
+2. Pour chaque valeur de k, combien de fois la ligne 4 est-elle exécutée ?
+3. En déduire une estimation du nombre total d’exécutions de la ligne 4, en fonction de n.
+4. Quelle est la complexité de l’algorithme ?
+
+
+Exercice 4 — Préfixes
+
+n souhaite calculer les sommes préfixes d’un tableau d’entiers T de taille n.
+On définit un tableau S tel que, pour tout i entre 0 et n − 1, on ait :
+S[i] = T [0] + T [1] + · · · + T [i]
+
+1. Écrire un pseudo-code qui calcule S étant donné un tableau T de taille n
+
+
+Pour i allant de 0 à n-1 
+    S[i] = 0
+pour i allant de 0 à i
+    S[i] += T[j]
+
+
+
+
+
+tab S-> [n] d'entiers
+ 
+n -> int
+saisir n
+ pour i allant de 0 à n-1 faire
+    saisir T[i]
+    fin pour
+
+S[0] <- T[0]
+pour i allant de 1 à n-1 faire
+    S[i] <- S[i-1] + T[i]
+fin pour
+afficher S
+fin 
+
+
+complexité : O(n)
+
