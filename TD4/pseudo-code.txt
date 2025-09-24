@@ -1,0 +1,113 @@
+Exercice : écrire une fonction qui calcul la longueur d’une chaîne de
+caractères.
+
+Fonction longueur_chaine(s : chaîne de caractères) : entier
+    i ← 0
+    tant que s[i] ≠ '\0' faire
+        i ← i + 1
+    fin tant que
+    retourner i
+
+#include <string>
+
+Écrire un programme qui lit une chaîne de caractères entrée par l’utilisateur, puis affiche :
+— le nombre de lettres (majuscules ou minuscules),
+— le nombre de chiffres,
+— le nombre d’espaces,
+— le nombre de caractères spéciaux (tout le reste).
+
+Fonction analyser_chaine(s : chaîne de caractères) : (entier, entier, entier, entier)
+    nb_lettres ← 0
+    nb_chiffres ← 0
+    nb_espaces ← 0
+    nb_speciaux ← 0
+    i ← 0
+    tant que s[i] ≠ '\0' faire
+        si s[i] est une lettre alors
+            nb_lettres ← nb_lettres + 1
+        sinon si s[i] est un chiffre alors
+            nb_chiffres ← nb_chiffres + 1
+        sinon si s[i] est un espace alors
+            nb_espaces ← nb_espaces + 1
+        sinon
+            nb_speciaux ← nb_speciaux + 1
+        fin si
+        i ← i + 1
+    fin tant que
+    retourner (nb_lettres, nb_chiffres, nb_espaces, nb_speciaux)
+
+
+    Exercice 2 — Test de palindrome
+Écrire un programme qui lit une chaîne de caractères et détermine si cette chaîne est un palin-
+drome, c’est-à-dire si elle se lit de la même façon de gauche à droite et de droite à gauche.
+Exemples de chaînes palindromes :
+— kayak
+— ressasser
+— radar
+
+fonction palindrome(char s : chaîne de caractères) : booléen
+    n ← longueur_chaine(s)
+    pour i de 0 à n div 2 faire
+        si s[i] ≠ s[n - 1 - i] alors
+            retourner faux
+        fin si
+    fin pour
+    retourner vrai
+
+
+
+    Exercice 3 — Inverser une chaîne
+Écrire un programme qui lit une chaîne de caractères et en construit une nouvelle contenant les
+mêmes caractères mais dans l’ordre inverse.
+
+fonction inverser_chaine(char s : chaîne de caractères) : chaîne de caractères
+    n ← longueur_chaine(s)
+    s_inv ← chaîne de caractères de taille n + 1
+    pour i de 0 à n - 1 faire
+        s_inv[i] ← s[n - 1 - i]
+    fin pour
+    s_inv[n] ← '\0'
+    retourner s_inv
+
+Exercice 4 — Concaténation de deux chaînes
+Écrire un programme qui lit deux chaînes de caractères et affiche une nouvelle chaîne contenant
+leur concaténation.
+
+fonction concatener_chaine(char s1 : chaîne de caractères, char s2 : chaîne de caractères) : chaîne de caractères
+    n1 ← longueur_chaine(s1)
+    n2 ← longueur_chaine(s2)
+    s_concat ← chaîne de caractères de taille n1 + n2 + 1
+    pour i de 0 à n1 - 1 faire
+        s_concat[i] ← s1[i]
+    fin pour
+    pour j de 0 à n2 - 1 faire
+        s_concat[n1 + j] ← s2[j]
+    fin pour
+    s_concat[n1 + n2] ← '\0'
+    retourner s_concat
+
+
+Exercice 6 — Recherche d’une sous-chaîne
+Écrire un pseudo-code qui prend en entrée deux chaînes de caractères :
+— une chaîne principale texte de longueur n ;
+— une chaîne motif de longueur m.
+Le programme doit retourner true si motif apparaît quelque part dans texte, sinon false.
+Quelle est la complexité de l’algorithme ? Exemples :
+— texte = "informatique", motif = "mat" ⇒ true
+— texte = "bonjour", motif = "jour" ⇒ true
+— texte = "bonjour", motif = "nuit" ⇒ false
+
+fonction recherche_sous_chaine(texte : chaîne de caractères, motif : chaîne de caractères) : booléen
+    n ← longueur_chaine(texte)
+    m ← longueur_chaine(motif)
+    pour i de 0 à n - m faire
+        j ← 0
+        tant que j < m et texte[i + j] = motif[j] faire
+            j ← j + 1
+        fin tant que
+        si j = m alors
+            retourner vrai
+        fin si
+    fin pour
+    retourner faux
+
