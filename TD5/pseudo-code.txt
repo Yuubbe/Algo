@@ -1,0 +1,329 @@
+Exercice : Écrire une fonction récursive qui calcule la somme des n
+premiers entiers.
+
+fonction somme_n_entiers(n <- entier )
+    si n = 0 alors
+        retourner 0
+    sinon si n = 1 alors
+        retourner 1
+    sinon
+        retourner n + somme_n_entiers(n - 1)
+    fin si
+fin fonction
+
+réécrire l’algorithme d’Euclide en utilisant la récursivité.
+
+
+a , b <- entiers 
+tant que b ≠ 0 faire
+    r ← a mod b
+    a ← b
+    b ← r
+fin tant que
+retourner a
+
+
+TD5 — Récursivité
+
+On veut écrire une fonction récursive qui calcule
+S(n) = 1 + 2 + ⋯ + n.
+1. Donner la définition récursive de S (cas de base, cas général).
+2. Écrire une fonction récursive S(n) qui retourne S(n) pour n ≥ 0.
+3. Que renvoie S(0), S(1), S(5) ? Vérifier sur papier.
+
+
+1. Définition récursive de S :
+   - Cas de base : S(0) = 0
+   - Cas général : S(n) = n + S(n-1) pour n > 0
+
+
+2. Fonction récursive S(n) :
+   fonction S(n : entier) : entier
+       si n = 0 alors
+           retourner 0
+       sinon
+           retourner n + S(n - 1)
+       fin si
+   fin fonction
+3. Calculs :
+   - S(0) = 0
+   - S(1) = 1 + S(0) = 1 + 0 = 1
+   - S(5) = 5 + S(4) = 5 + (4 + S(3))
+            = 5 + (4 + S(3))
+            = 5 + (4 + (3 + S(2)))
+            = 5 + (4 + (3 + (2 + S(1))))
+            = 5 + (4 + (3 + (2 + 1)))
+            = 5 + (4 + (3 + 3))
+            = 5 + (4 + 6)
+            = 5 + 10
+            = 15
+   Donc, S(0) = 0, S(1) = 1, S(5) = 15.
+
+
+
+   Exercice 2 — Somme des chiffres
+On considère un entier positif n (par exemple n = 1729).
+1. Donner une définition récursive de la fonction sommeChiffres(n) qui retourne la somme
+des chiffres de n. Indication : utiliser le dernier chiffre (reste de la division par 10) et
+l’appel récursif sur le quotient.
+2. Écrire la fonction récursive correspondante.
+3. Tester sur quelques exemples :
+sommeChiffres(0)=0, sommeChiffres(123)=6, sommeChiffres(999)=27.
+
+1. Définition récursive de sommeChiffres(n) :
+   - Cas de base : sommeChiffres(0) = 0
+   - Cas général : sommeChiffres(n) = (n mod 10) + sommeChiffres(n div 10) pour n > 0
+
+2. Fonction récursive sommeChiffres(n) :
+    fonction sommeChiffres(n : entier) : entier
+        si n <= 0 alors
+            retourner 0
+        sinon
+            retourner (n mod 10) + sommeChiffres(n div 10)
+        fin si
+    fin fonction
+3. Tests :
+    - sommeChiffres(0) = 0
+    - sommeChiffres(123) = 3 + sommeChiffres(12) = 3 + (2 + sommeChiffres(1)) = 3 + (2 + (1 + sommeChiffres(0))) = 3 + (2 + (1 + 0)) = 6
+    - sommeChiffres(999) = 9 + sommeChiffres(99) = 9 + (9 + sommeChiffres(9)) = 9 + (
+9 + (9 + sommeChiffres(0))) = 9 + (9 + (9 + 0)) = 27
+
+
+
+
+Exercice 3 — Puissance xn
+On veut calculer xn pour x ∈ R, n ∈ Z.
+1. Écrire une version récursive pour n ≥ 0 (cas de base n = 0).
+2. Étendre la fonction aux n < 0 en utilisant xn = 1
+x−n (préciser le comportement si x = 0 et
+n < 0).
+
+
+fonction puissance(x <- entier , n <- entier )
+    si n = 0 alors
+        retourner 1
+    sinon si n > 0 alors
+        retourner x * puissance(x, n - 1)
+    sinon si x = 0 alors
+        afficher("Erreur : division par zéro")
+        retourner indéfini
+    sinon
+        retourner 1 / puissance(x, -n)
+    fin si
+fin fonction
+
+2. Étendre la fonction aux n < 0 en utilisant xn = 1/x−n (préciser le comportement si x = 0 et n < 0).
+
+fonction puissance(x <- entier , n <- entier )
+    si n = 0 alors
+        retourner 1
+    sinon si n > 0 alors
+        retourner x * puissance(x, n - 1)
+    sinon si x = 0 alors
+        afficher("Erreur : division par zéro")
+        retourner indéfini
+    sinon
+        retourner 1 / puissance(x, -n)
+    fin si
+fin fonction
+
+3. Tester la fonction sur quelques exemples : puissance(2, 10) = 1024, puissance(2, −2) = 0.25,
+unsigned puissance(0, 0) = 1, puissance(0, 5) = 0, puissance(0, −2) = erreur.
+
+
+
+
+
+
+
+Exercice 4 — Fibonacci
+La suite de Fibonacci est définie par F (0) = 0, F (1) = 1, et F (n) = F (n − 1) + F (n − 2) pour
+n ≥ 2.
+1. Écrire une fonction récursive fib(n) qui calcule F (n).
+2. Expliquer pourquoi cette version est exponentielle (arbre d’appels).
+
+définition récursive de F :
+   - Cas de base : F(0) = 0, F(1) = 1
+   - Cas général : F(n) = F(n-1) + F(n-2) pour n ≥ 2
+
+1. Fonction récursive fib(n) :
+
+fonction fib ( n <- entier)
+    si n = 0 alors
+        retourner 0
+    sinon si n = 1 alors
+        retourner 1
+    sinon
+        retourner fib(n - 1) + fib(n - 2)
+    fin si
+fin fonction
+
+2. La version récursive de Fibonacci est exponentielle
+ car chaque appel à fib(n) génère deux appels supplémentaires
+  : fib(n-1) et fib(n-2). Cela crée un arbre d'appels où le nombre
+   total d'appels croît de manière exponentielle avec n, car chaque
+    niveau de l'arbre double le nombre d'appels par rapport au niveau
+     précédent. Par conséquent, la complexité temporelle de cette 
+     approche est O(2^n), ce qui devient rapidement impraticable
+      pour des valeurs de n relativement petites (par exemple, n > 30).
+
+
+
+
+Exercice 5 — Suite définie par récurrence
+Soit la suite (un) définie par u0 = 2 et un+1 = 3un + 1 pour n ≥ 0.
+1. Écrire une fonction récursive u(n) qui calcule un.
+2. Calculer à la main u0, u1, u2, u3 et vérifier avec la fonction.
+
+cas de base : u0 = 2
+cas général : un+1 = 3un + 1 pour n ≥ 0
+
+1. Fonction récursive u(n) :
+   fonction u(n : entier) : entier
+       si n = 0 alors
+           retourner 2
+       sinon
+           retourner 3 * u(n - 1) + 1
+       fin si
+   fin fonction
+
+2. Calculs :
+    - u0 = 2
+    - u1 = 3 * u0 +1 = 3 * 2 + 1 = 7
+    - u2 = 3 * u1 + 1 = 3 * 7 + 1 = 22
+    - u3 = 3 * u2 + 1 = 3 * 22 + 1 = 67
+
+
+Exercice 6 — Somme (et max) d’un tableau
+On donne un tableau d’entiers T de taille n.
+1. Écrire une fonction récursive sum(T, n) qui retourne la somme des n premiers éléments
+du tableau.
+2. Écrire max(T, n) qui retourne le maximum des n premiers éléments (supposer n ≥ 1).
+
+
+cas de base : sum(T, 0) = 0
+cas général : sum(T, n) = T[n-1] + sum(T, n-1) pour n > 0
+
+cas de base : max(T, 1) = T[0]
+cas général : max(T, n) = max(T[n-1], max(T, n-1)) pour n > 1
+
+1. Fonction récursive sum(T, n) :
+   fonction sum(T : tableau d'entiers, n : entier) : entier
+       si n = 0 alors
+           retourner 0
+       sinon
+           retourner T[n - 1] + sum(T, n - 1)
+       fin si
+   fin fonction
+
+2. Fonction récursive max(T, n) :
+    fonction max(T : tableau d'entiers, n : entier) : entier
+        si n = 1 alors
+            retourner T[0]
+        sinon
+            retourner max(T[n - 1], max(T, n - 1))
+        fin si
+    fin fonction    
+Fin Fonction
+
+
+
+Exercice 7 — Nombre de chiffres
+On considère un entier positif n.
+1. Écrire une fonction récursive nbChiffres(n) qui retourne le nombre de chiffres de n.
+2. Exemples attendus : nbChiffres(7)=1, nbChiffres(123)=3.
+
+
+
+cas de base : nbChiffres(0) = 1
+cas général : nbChiffres(n) = 1 + nbChiffres(n div 10) pour n > 0
+
+1. Fonction récursive nbChiffres(n) :
+   fonction nbChiffres(n : entier) : entier
+       si n < 10 alors
+           retourner 1
+       sinon
+           retourner 1 + nbChiffres(n div 10)
+       fin si
+   fin fonction
+
+2. Tests :
+   - nbChiffres(7) = 1
+   - nbChiffres(123) = 3
+
+
+
+
+Exercice 8 — Recherche dichotomique
+On suppose qu’un tableau d’entiers est trié par ordre croissant.
+1. Écrire une fonction récursive rech(T, n, x) qui teste si l’élément x est présent.
+2. Que se passe-t-il si le tableau est vide ?
+3. Quelle est la complexité ?
+
+
+cas de base : si n = 0 alors retourner faux
+cas général :
+   - si T[milieu] = x alors retourner vrai
+   - si T[milieu] < x alors chercher dans la moitié droite
+   - sinon chercher dans la moitié gauche   
+
+
+1. Fonction récursive rech(T, n, x) :
+    fonction rech(T : tableau d'entiers, n : entier, x : entier) : booléen
+         si n = 0 alors
+              retourner faux
+         milieu ← n div 2
+         si T[milieu] = x alors
+              retourner vrai
+         sinon si T[milieu] < x alors
+              retourner rech(T[milieu + 1 à n - 1], n - milieu - 1, x)
+         sinon
+              retourner rech(T[0 à milieu - 1], milieu, x)
+         fin si
+    fin fonction
+
+2. Si le tableau est vide (n = 0), la fonction retourne faux, indiquant que l'élément x n'est pas présent.
+3. La complexité de la recherche dichotomique est O(log n) dans le pire des cas, car à chaque étape, la taille du tableau à rechercher est divisée par deux.
+
+
+
+
+Exercice 9 — Tours de Hanoï (★ ★ ★)
+On considère le problème des tours de Hanoï.
+On dispose de trois piquets (A, B et C) et de n disques de tailles différentes, empilés au départ
+sur le piquet A (du plus grand en bas au plus petit en haut).
+On veut déplacer toute la pile de disques du piquet A vers le piquet C, en respectant les règles
+suivantes :
+— on ne peut déplacer qu’un seul disque à la fois ;
+— seul le disque du dessus d’un piquet peut être déplacé ;
+— il est interdit de poser un disque sur un disque plus petit.
+1. Expliquer la stratégie récursive : déplacer n − 1 disques de A vers B, déplacer le dernier
+de A vers C, puis déplacer les n − 1 disques de B vers C.
+2. Écrire une fonction récursive qui affiche les déplacements à effectuer.
+3. Combien de déplacements sont nécessaires pour n = 1, 2, 3, 4 
+
+
+1. Stratégie récursive :
+   - Pour déplacer n disques de A vers C en utilisant B comme piquet intermédiaire :
+     1. Déplacer les n-1 disques du dessus de A vers B en utilisant C comme piquet intermédiaire.
+     2. Déplacer le disque restant (le plus grand) de A vers C.
+     3. Déplacer les n-1 disques de B vers C en utilisant A comme piquet intermédiaire.
+
+2. Fonction récursive pour afficher les déplacements :
+    fonction hanoi(n : entier, source : char, cible : char, intermédiaire :
+    char)
+        si n = 1 alors
+            afficher("Déplacer le disque de " + source + " vers " + cible)
+        sinon
+            hanoi(n - 1, source, intermédiaire, cible)
+            afficher("Déplacer le disque de " + source + " vers " + cible)
+            hanoi(n - 1, intermédiaire, cible, source)
+        fin si
+    fin fonction
+
+3. Nombre de déplacements nécessaires :
+    - Pour n = 1 : 1 déplacement
+    - Pour n = 2 : 3 déplacements
+    - Pour n = 3 : 7 déplacements
+    - Pour n = 4 : 15 déplacements
+    En général, le nombre de déplacements nécessaires pour n disques est 2^n -1.
