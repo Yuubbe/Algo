@@ -1,0 +1,134 @@
+Tri par Sélection
+
+
+Données: T : tableau de n entiers
+1 pour i de 0 à n − 2 faire
+2 min ← i;
+3 pour j de i + 1 à n − 1 faire
+4 si T [j] < T [min] alors
+5 min ← j
+6 intervertir T [min] et T [i];
+
+Exercice : Dérouler l’algorithme du tri par sélection sur le tableau
+suivant.
+37 12 58 4 29 73 19 46 8 65
+
+tab T -> [10] d'entiers
+T[0] <- 37
+T[1] <- 12
+T[2] <- 58
+T[3] <- 4 
+T[4] <- 29
+T[5] <- 73
+T[6] <- 19
+T[7] <- 46
+T[8] <- 8
+T[9] <- 65
+n <- 10
+pour i allant de 0 à n-2 faire
+    min <- i
+    pour j allant de i+1 à n-1 faire
+        si T[j] < T[min] alors
+            min <- j
+        fin si
+    fin pour
+    intervertir T[min] et T[i]
+fin pour
+afficher T
+fin
+
+
+
+
+
+Tri par Insertion
+Données: T : tableau de n entiers
+1 pour i de 1 à n − 1 faire
+2 x ← T [i];
+3 j ← i;
+/* On décale les éléments plus grand que T [i] */
+4 tant que j > 0 et T [j − 1] > x faire
+5 T [j] ← T [j − 1] ;
+6 j ← j − 1;
+/* On place la valeur x dans le trou laissé par le
+décalage. */
+7 T [j] ← x;
+Question : complexité : pire des cas : O(n²)
+meilleur des cas : O(n)
+
+
+
+37 12 58 4 29 73 19 46 8 65
+
+12 37 58 4 29 73 19 46 8 65
+
+4 12 37 58 29 73 19 46 8 65
+
+4 8 12 37 58 29 73 19 46 65
+
+4 8 12 19 29 37 58 73 45 65
+
+4 8 12 19 29 37 45 58 73 65
+
+4 8 12 19 29 37 45 58 65 73
+
+
+Tri à bulles
+Données: T : tableau de n entiers
+1 pour i de n − 1 à 1 faire
+2 pour j allant de 0 à i − 1 faire
+3 si T [j + 1] < T [j] alors
+4 intervertir T [j + 1] et T [j]
+
+
+Question : complexité ? pire des cas : O(n²)
+meilleur des cas : O(n)
+
+37 12 58 4 29 73 19 46 8 65
+
+12 37 58 4 29 73 19 46 8 65
+
+12 37 4 58 29 73 19 46 8 65
+
+12 4 37 58 29 73 19 46 8 65
+
+4 12 37 29 58 73 19 46 8 65
+
+4 12 29 37 58 73 19 46 8 65
+
+4 12 29 37 58 19 73 46 8 65
+
+
+
+Données: T : tableau de n entiers
+1 Fonction triFusion(T):
+2 si n = 1 alors
+3 fin
+4 sinon
+5 T1 ← T [1, . . . , n/2]; /* On sépare T en deux */
+6 T2 ← T [n/2 + 1, . . . , n];
+7 triFusion(T1);
+8 triFusion(T2);
+9 T ← fusionner (T1, T2);
+
+
+Données:
+
+T1 : tableau de n1 entiers triés
+
+T2 : tableau de n2 entiers triés
+
+1 Fonction fusionner(T1, T2):
+2 T ← tableau de taille n1 + n2
+3 i ← 0 ; j ← 0 ; k ← 0
+4 tant que i < n1 et j < n2 faire
+5 si T1[i] < T2[j] alors
+6 T [k] ← T1[i] ; i ← i + 1
+7 sinon
+8 T [k] ← T2[j] ; j ← j + 1
+9 k ← k + 1
+10 tant que i < n1 faire
+11 T [k] ← T1[i] ; i ← i + 1 ; k ← k + 1
+12 tant que j < n2 faire
+13 T [k] ← T2[j] ; j ← j + 1 ; k ← k + 1
+14 retourner T
