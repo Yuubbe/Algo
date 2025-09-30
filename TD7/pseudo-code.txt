@@ -1,0 +1,240 @@
+Exercice 2 — Compléter un tableau dynamique
+On reprend la structure TabDyn vue en cours (tableau dynamique d'entiers). On vous demande
+d'ajouter les fonctionnalités suivantes :
+— unsigned taille() const; — retourne le nombre d'éléments présents ;
+— bool supprimer(int x); — si le tableau contient x, supprime une occurrence de x et
+renvoie vrai ;
+— void effacer(); — supprime tous les éléments (remet taille à 0, laisse la capacité
+inchangée)
+
+Pseudo-code pour l'exercice 2 :
+
+Structure TabDyn {
+    private:
+        int* donnees     // pointeur vers le tableau dynamique
+        unsigned cap     // capacité maximale du tableau
+        unsigned nb      // nombre d'éléments actuellement présents
+    
+    public:
+        // Constructeur, destructeur et autres méthodes déjà vues...
+        
+        // Méthode taille()
+        fonction taille() -> unsigned
+            retourner nb
+        fin fonction
+        
+        // Méthode supprimer(int x)
+        fonction supprimer(x: int) -> bool
+            pour i de 0 à nb-1 faire
+                si donnees[i] == x alors
+                    // Décaler tous les éléments suivants vers la gauche
+                    pour j de i à nb-2 faire
+                        donnees[j] = donnees[j+1]
+                    fin pour
+                    nb = nb - 1  // Réduire le nombre d'éléments
+                    retourner vrai
+                fin si
+            fin pour
+            retourner faux  // Élément non trouvé
+        fin fonction
+        
+        // Méthode effacer()
+        fonction effacer()
+            nb = 0  // Remet le nombre d'éléments à 0
+            // Note: on ne libère pas la mémoire, on garde la capacité
+        fin fonction
+}
+
+Exemple d'utilisation :
+    TabDyn tab
+    tab.ajouter(5)
+    tab.ajouter(10)
+    tab.ajouter(15)
+    
+    afficher "Taille: " + tab.taille()  // Affiche 3
+    
+    si tab.supprimer(10) alors
+        afficher "10 supprimé avec succès"
+    fin si
+    
+    afficher "Nouvelle taille: " + tab.taille()  // Affiche 2
+    
+    tab.effacer()
+    afficher "Taille après effacement: " + tab.taille()  // Affiche 0dification indirecte
+Écrire un programme qui :
+
+1. crée un entier x et affiche sa valeur ;
+
+2. déclare un pointeur p qui pointe vers x ;
+
+3. modifie x en passant par *p (par exemple, multiplier x par 3) ;
+
+4. affiche la valeur de x avant et après la modification ;
+
+5. expliquez (en commentaire) ce que fait l’opérateur * dans ce contexte.
+
+Squelette de départ :
+#include <iostream>
+using namespace std;
+int main() {
+int x = 10;
+cout << "Avant: x = " << x << endl;
+int *p = /* TODO: faire pointer p vers x */ ;
+/* TODO: modifier x via *p (par ex. x *= 3) */
+cout << "Apres: x = " << x << endl;
+// Expliquez le role de * dans ce contexte.
+return 0;
+}
+
+Exercice 2 — Compléter un tableau dynamique
+On reprend la structure TabDyn vue en cours (tableau dynamique d’entiers). On vous demande
+d’ajouter les fonctionnalités suivantes :
+— unsigned taille() const; — retourne le nombre d’éléments présents ;
+— bool supprimer(int x); — si le tableau contient x, supprime une occurrence de x et
+renvoie vrai ;
+— void effacer(); — supprime tous les éléments (remet taille à 0, laisse la capacité
+inchangée)
+
+
+Pseudo-code
+1 struct Robot contient
+2 id : entier ;
+3 temperature : réel;
+4 actif : booléen;
+
+
+
+
+
+
+
+xercice 3 — Mini-journal avec structures et pointeurs
+On souhaite modéliser un petit système de journalisation. On va déclarer trois structures
+— Entree : contient un texte (chaîne) et un nom d’une personne (chaîne).
+— Journal : contient un ensemble (tableau dynamique) d’entrées.
+1
+— Personne : contient nom, prenom, et un pointeur vers un Journal.
+Écrire les fonctions suivantes :
+— Dans Entree, la fonction afficher() affiche le nom de la personne qui a écrit le texte
+puis le texte (sur une ligne).
+— Dans Journal, la fonction afficher() affiche toutes les entrées dans l’ordre, numérotées
+à partir de 1.
+— Dans Journal, la fonction nouvelle_entree(const std::string& nom, const std::string
+texte ) qui rentre une nouvelle entrée dans le journal
+— Dans Personne, la fonction ajouter_entrée(const string& texte) qui demande au
+journal pointé d’écrire une nouvelle entrée avec le nom de la personne et le texte passé en
+paramètre.
+Exemple d’utilisation :
+int main() {
+Journal j;
+Personne p1{"Dupont", "Alice", &j};
+Personne p2{"Martin", "Bob", &j};
+p1.ajouter_entree("Bonjour, ceci est ma première entrée.");
+p2.ajouter_entree("Je réponds à Alice avec une autre entrée.");
+p1.ajouter_entree("Encore un message.");
+j.afficher();
+return 0;
+}
+Sortie attendue (exemple) :
+1. Dupont Alice : Bonjour, ceci est ma première entrée.
+2. Martin Bob : Je réponds à Alice avec une autre entrée.
+3. Dupont Alice : Encore un message.
+
+Pseudo-code pour l'exercice 3 :
+
+Structure Entree {
+    private:
+        string nom_personne    // nom de la personne qui a écrit
+        string texte          // contenu du message
+    
+    public:
+        // Constructeur
+        fonction Entree(nom: string, txt: string)
+            nom_personne = nom
+            texte = txt
+        fin fonction
+        
+        // Méthode afficher()
+        fonction afficher()
+            afficher nom_personne + " : " + texte
+        fin fonction
+}
+
+Structure Journal {
+    private:
+        Entree* entrees       // tableau dynamique d'entrées
+        unsigned capacite     // capacité du tableau
+        unsigned nb_entrees   // nombre d'entrées actuelles
+    
+    public:
+        // Constructeur
+        fonction Journal()
+            capacite = 10
+            nb_entrees = 0
+            entrees = allouer_tableau(capacite, Entree)
+        fin fonction
+        
+        // Destructeur
+        fonction ~Journal()
+            liberer(entrees)
+        fin fonction
+        
+        // Méthode nouvelle_entree()
+        fonction nouvelle_entree(nom: string, txt: string)
+            si nb_entrees >= capacite alors
+                // Agrandir le tableau si nécessaire
+                capacite = capacite * 2
+                entrees = redimensionner_tableau(entrees, capacite)
+            fin si
+            
+            entrees[nb_entrees] = Entree(nom, txt)
+            nb_entrees = nb_entrees + 1
+        fin fonction
+        
+        // Méthode afficher()
+        fonction afficher()
+            pour i de 0 à nb_entrees-1 faire
+                afficher (i+1) + ". "
+                entrees[i].afficher()
+                nouvelle_ligne()
+            fin pour
+        fin fonction
+}
+
+Structure Personne {
+    private:
+        string nom            // nom de famille
+        string prenom         // prénom
+        Journal* mon_journal  // pointeur vers le journal partagé
+    
+    public:
+        // Constructeur
+        fonction Personne(n: string, p: string, j: Journal*)
+            nom = n
+            prenom = p
+            mon_journal = j
+        fin fonction
+        
+        // Méthode ajouter_entree()
+        fonction ajouter_entree(txt: string)
+            string nom_complet = nom + " " + prenom
+            mon_journal->nouvelle_entree(nom_complet, txt)
+        fin fonction
+}
+
+Exemple d'utilisation (main) :
+    Journal j                    // Créer un journal
+    Personne p1("Dupont", "Alice", &j)    // Alice pointe vers j
+    Personne p2("Martin", "Bob", &j)      // Bob pointe vers j
+    
+    p1.ajouter_entree("Bonjour, ceci est ma première entrée.")
+    p2.ajouter_entree("Je réponds à Alice avec une autre entrée.")
+    p1.ajouter_entree("Encore un message.")
+    
+    j.afficher()  // Affiche toutes les entrées numérotées
+
+
+
+
+
+
